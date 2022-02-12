@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { publicRequest } from "../../requestMethods";
+// import {Image} from '../../asset/zapatillasRegister.jpg'
 import {
   Container,
   Wrapper,
@@ -12,25 +13,32 @@ import {
 import { NavLink } from "react-router-dom";
 
 const Register = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [data, setData] = useState({
+    username: '',
+    email:'',
+    password:''
+  })
+
   const [error, setError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(false);
     try {
-      const res = await publicRequest.post("auth/register", {
-        username,
-        email,
-        password,
-      });
+      const res = await publicRequest.post("auth/register",data);
       res.data && window.location.replace("/login");
     } catch (err) {
       setError(true);
     }
   };
+
+  const onChange = (e)=>{
+    setData({
+      ...data,
+      [e.target.name]: e.target.value
+    }) 
+  
+  }
 
   return (
     <Container>
@@ -42,17 +50,20 @@ const Register = () => {
           <Input
             type="text"
             placeholder="username"
-            onChange={(e) => setUsername(e.target.value)}
+            name="username"
+            onChange={onChange}
           />
           <Input
             type="email"
             placeholder="email"
-            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            onChange={onChange}
           />
           <Input
             type="password"
+            name="password"
             placeholder="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={onChange}
           />
           {/* <Input type="password" placeholder="confirm password" /> */}
           <Agreement>

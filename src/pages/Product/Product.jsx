@@ -1,6 +1,6 @@
 // DEPENDENCIAS
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { Add, Remove } from "@material-ui/icons";
@@ -34,6 +34,7 @@ import {
 } from "./Product.style";
 
 const Product = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const id = location.pathname.split("/")[2];
 
@@ -43,8 +44,8 @@ const Product = () => {
   const [size, setSize] = useState("");
 
   const dispatch = useDispatch();
-
   useEffect(() => {
+    window.scrollTo(0, 0);
     const getProduct = async () => {
       try {
         const res = await publicRequest.get("/products/find/" + id);
@@ -64,8 +65,9 @@ const Product = () => {
 
   const handleClick = () => {
     dispatch(addProduct({ ...product, quantity, color, size }));
+    navigate("/cart");
   };
-  
+
   return (
     <Container>
       <Navbar />

@@ -3,10 +3,26 @@ import { useState } from "react";
 // import { popularProducts } from "../data";
 import Product from "../Product/Product";
 import axios from "axios";
-import { Container } from "./Products.style";
+import { Container, ContainerBtn,ContainerProd, Button } from "./Products.style";
 
 const Products = ({ cat, filters, sort }) => {
   const [products, setProducts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [productForPage] = useState(8);
+  const indexLast = page * productForPage;
+  const indexFirst = indexLast - productForPage;
+  const allProductsForPage = products.slice(indexFirst, indexLast);
+  const allroducts = products.length;
+  let pagesNumber = [];
+
+  function onPage(value) {
+    setPage(value);
+  }
+
+  for (let i = 1; i <= Math.ceil(allroducts / productForPage); i++) {
+    pagesNumber.push(i);
+  }
+
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
@@ -22,7 +38,6 @@ const Products = ({ cat, filters, sort }) => {
     };
     getProducts();
   }, [cat]);
-
   useEffect(() => {
     cat &&
       setFilteredProducts(
@@ -36,11 +51,20 @@ const Products = ({ cat, filters, sort }) => {
 
   return (
     <Container>
-      {cat
-        ? filteredProducts.map((item) => <Product item={item} key={item.id} />)
-        : products
-            .slice(0, 8)
-            .map((item) => <Product item={item} key={item.id} />)}
+      <ContainerBtn>
+        {pagesNumber.map((e) => {
+          return <Button onClick={() => onPage(e)}> {e}</Button>;
+        })}
+      </ContainerBtn>
+      <ContainerProd>
+        {cat
+          ? filteredProducts.map((item) => (
+              <Product item={item} key={item.id} />
+            ))
+          : allProductsForPage.map((item) => (
+              <Product item={item} key={item.id} />
+            ))}
+      </ContainerProd>
     </Container>
   );
 };

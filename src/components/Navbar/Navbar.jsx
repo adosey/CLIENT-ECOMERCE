@@ -40,21 +40,23 @@ const Navbar = () => {
         </Left>
         <Center>
           <Logo>
-            <Link className='linkGeneric' to="/">
+            <Link className="linkGeneric" to="/">
               ECOMERCE MELANIE
             </Link>
           </Logo>
         </Center>
         <Right>
-          <Link className='linkGeneric' to="/register">
-            <MenuItem>REGISTER</MenuItem>
-          </Link>
+          {!user && (
+            <Link className="linkGeneric" to="/register">
+              <MenuItem>Register</MenuItem>
+            </Link>
+          )}
           {!user ? (
-            <Link className='linkGeneric' to="/login">
-              <MenuItem>SIGN IN</MenuItem>
+            <Link className="linkGeneric" to="/login">
+              <MenuItem>Log in</MenuItem>
             </Link>
           ) : (
-            <MenuItem onClick={handleClick}>LOGOUT</MenuItem>
+            <MenuItem onClick={handleClick}>Logout</MenuItem>
           )}
           <Link to="/cart">
             <MenuItem>

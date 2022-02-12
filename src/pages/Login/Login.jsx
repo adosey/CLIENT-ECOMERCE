@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../../redux/apiCalls";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import {
   Container,
@@ -10,52 +10,69 @@ import {
   Form,
   Input,
   Button,
-  Error,
+  // Error,
   DivBtn,
 } from "./Login.style";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [data, setData] = useState({
+    username: "",
+    password: "",
+  });
   const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
+  // const [error, setError] = useState(true);
+
+  const redir = useNavigate();
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(error);
-    alert("INGRESAR");
-    login(dispatch, { username, password });
+    if (data.username === "" || data.password === "") {
+      return alert("Debe ingresar datos");
+    }
+    login(dispatch, data)
+      .then(() => {
+        redir("/");
+      })
+      .catch((err) => console.log(err));
   };
+
+  const onChange = (e) => {
+    setData({
+      ...data, 
+      [e.target.name]: e.target.value,
+    })
+  }
 
   return (
     <Container>
       <Wrapper>
-        <Title>SIGN IN</Title>
+        <Title>LOG IN</Title>
         <Form>
           <Input
             placeholder="username"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={onChange}
+            name="username"
+            value={data.username}
           />
+          {/* {error && <Error>You must be write a user...</Error>} */}
           <Input
             placeholder="password"
             type="password"
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            onChange={onChange}
+            value={data.password}
           />
+          {/* {error && <Error>You must be write a password...</Error>} */}
           <DivBtn>
             <Button className="linkGeneric">
               <NavLink className="linkRegister" to="/">
                 VOLVER
               </NavLink>
             </Button>
-            <Button
-              className="linkGeneric"
-              onClick={handleClick}
-              disabled={isFetching}
-            >
+            <Button className="linkGeneric" onClick={handleClick}>
               LOGIN
             </Button>
           </DivBtn>
-          {error && <Error>Something went worng...</Error>}
           <NavLink className="linkLogin" to="/register">
             DO NOT YOU REMEMBER THE PASSWORD?
           </NavLink>
