@@ -1,14 +1,19 @@
-import React from 'react'
-import { useLocation } from 'react-router-dom'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Container, DivSuccess } from "./Success";
 
 const Success = () => {
-    const location = useLocation()
-    console.log(location);
-    return (
-        <div>
-            successfull
-        </div>
-    )
-}
+  const redir = useNavigate();
 
-export default Success
+  setTimeout(() => {
+    redir("/");
+  }, 1500);
+
+  return (
+    <Container>
+      <DivSuccess>Success</DivSuccess>
+    </Container>
+  );
+};
+
+export default Success;
