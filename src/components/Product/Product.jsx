@@ -9,12 +9,11 @@ import { useNavigate } from "react-router-dom";
 const Product = ({ item}) => {
   const navigate = useNavigate();
 
-  function onChangeColor(e) {
-    e.target.style.color = "red";
-    e.target.style.border = "2px solid red";
-  }
   function onNavigate() {
     navigate(`/product/${item._id}`);
+  }
+  function onNavigateFav() {
+    navigate(`/favorites/${item._id}`);
   }
   return (
     <Container>
@@ -24,7 +23,7 @@ const Product = ({ item}) => {
         <Icon onClick={onNavigate}>
           <SearchOutlined />
         </Icon>
-        <Icon onClick={onChangeColor}>
+        <Icon onClick={onNavigateFav}>
           <FavoriteBorderOutlined />
         </Icon>
       </Info>
