@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/apiCalls";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -18,21 +18,40 @@ const Login = () => {
         username: "",
         password: "",
     });
+    const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [error, setError] = useState(true);
+    const [error, setError] = useState(false);
 
-    // const navigate = useNavigate();
+    useEffect(() => {
+        const handleAlert = () => {
+            if (error) return alert('Credenciales no validas')
+            else return null
+        }
+        handleAlert()
+    }, [error])
 
     const handleClick = (e) => {
         e.preventDefault();
         if (data.username === "" || data.password === "") {
-            return alert("Debe ingresar datos");
+            e.preventDefault();
+            alert("Debe ingresar datos");
+            setData({
+                username: '',
+                password: ''
+            })
+        } else {
+            e.preventDefault()
+            login(dispatch, data)
+                .then(res => {
+                    if (res) {
+                        return navigate('/')
+                    } else {
+                        setData({ username: '', password: '' })
+                        setError(true)
+                    }
+                })
+                .catch(err => console.log(err))
         }
-        setData({
-            username:'',
-            password:''
-        })
-        login(dispatch, data)
     };
 
     const onChange = (e) => {
@@ -54,7 +73,7 @@ const Login = () => {
                         name="username"
                         value={data.username}
                     />
-                    {error && <p>You must be write a user...</p>}
+                    {error && <p style={{ color: 'red' }} >You must be write a user...</p>}
                     <Input
                         placeholder="password"
                         type="password"
@@ -62,7 +81,7 @@ const Login = () => {
                         onChange={onChange}
                         value={data.password}
                     />
-                    {error && <p>You must be write a password...</p>}
+                    {error && <p style={{ color: 'red' }} >You must be write a password...</p>}
                     <DivBtn>
                         <Button className="linkGeneric">
                             <NavLink style={{ borderRadius: '5px' }} className="linkRegister" to="/">
