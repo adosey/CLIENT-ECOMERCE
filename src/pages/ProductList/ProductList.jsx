@@ -1,10 +1,9 @@
 import Navbar from "../../components/Navbar/Navbar";
 import Announcement from "../../components/Announcement/Announcement";
 import Products from "../../components/Products/Products";
-import Newsletter from "../../components/Newsletter/Newsletter";
 import Footer from "../../components/Footer/Footer";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import { red } from "@material-ui/core/colors";
 import {
   Container,
@@ -21,6 +20,10 @@ const ProductList = () => {
   const cat = location.pathname.split("/")[2];
   const [filters, setFilters] = useState({});
   const [sort, setSort] = useState("newest");
+
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  },[])
 
   const handleFilters = (e) => {
     const value = e.target.value;
@@ -66,7 +69,6 @@ const ProductList = () => {
         </Filter>
       </FilterContainer>
       <Products cat={cat} filters={filters} sort={sort} />
-      <Newsletter />
       <Footer />
     </Container>
   );
