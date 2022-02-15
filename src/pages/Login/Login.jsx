@@ -19,18 +19,20 @@ const Login = () => {
         password: "",
     });
     const dispatch = useDispatch();
-    // const [error, setError] = useState(true);
+    const [error, setError] = useState(true);
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const handleClick = (e) => {
         e.preventDefault();
         if (data.username === "" || data.password === "") {
             return alert("Debe ingresar datos");
         }
+        setData({
+            username:'',
+            password:''
+        })
         login(dispatch, data)
-            .then(response => navigate('/'))
-            .catch(err => console.log(err))
     };
 
     const onChange = (e) => {
@@ -38,6 +40,7 @@ const Login = () => {
             ...data,
             [e.target.name]: e.target.value,
         })
+        setError(false)
     }
 
     return (
@@ -51,7 +54,7 @@ const Login = () => {
                         name="username"
                         value={data.username}
                     />
-                    {/* {error && <Error>You must be write a user...</Error>} */}
+                    {error && <p>You must be write a user...</p>}
                     <Input
                         placeholder="password"
                         type="password"
@@ -59,7 +62,7 @@ const Login = () => {
                         onChange={onChange}
                         value={data.password}
                     />
-                    {/* {error && <Error>You must be write a password...</Error>} */}
+                    {error && <p>You must be write a password...</p>}
                     <DivBtn>
                         <Button className="linkGeneric">
                             <NavLink style={{ borderRadius: '5px' }} className="linkRegister" to="/">
