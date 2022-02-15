@@ -56,17 +56,26 @@ export const FilterTitle = styled.span`
   font-size: 20px;
   font-weight: 200;
 `;
-
-export const FilterColor = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-  margin: 0px 5px;
-  cursor: pointer;
+export const FilterTitleSize = styled.span`
+  font-size: 20px;
+  font-weight: 200;
+  margin-left: 10px;
 `;
 
+// export const FilterColor = styled.div`
+//   width: 20px;
+//   height: 20px;
+//   border-radius: 50%;
+//   background-color: ${(props) => props.color};
+//   margin: 0px 5px;
+//   cursor: pointer;
+// `;
+
 export const FilterSize = styled.select`
+  margin-left: 10px;
+  padding: 5px;
+`;
+export const FilterColor = styled.select`
   margin-left: 10px;
   padding: 5px;
 `;

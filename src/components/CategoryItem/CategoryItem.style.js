@@ -29,14 +29,15 @@ export const Info = styled.div`
 
 export const Title = styled.h1`
   color: white;
+  text-shadow: 1px 1px 1px #000000,1px 1px 1px #000000,1px 1px 1px #000000;
   margin-bottom: 20px;
 `;
 
 export const Button = styled.button`
   border: none;
   padding: 10px;
-  background-color: white;
-  color: gray;
+  background-color: rgba(255,255,255,.6);
+  color: #000000;
   cursor: pointer;
   font-weight: 600;
 `;

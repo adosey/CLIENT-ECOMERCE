@@ -19,6 +19,7 @@ export const Info = styled.div`
 export const Container = styled.div`
   flex: 1;
   margin: 5px;
+  width: 150px;
   min-width: 280px;
   height: 350px;
   display: flex;
@@ -32,22 +33,22 @@ export const Container = styled.div`
   }
 `;
 
-export const Circle = styled.div`
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background-color: white;
-  position: absolute;
-`;
+// export const Circle = styled.div`
+//   width: 200px;
+//   height: 200px;
+//   border-radius: 50%;
+//   background-color: white;
+//   position: absolute;
+// `;
 
 export const Image = styled.img`
-  height: 75%;
+  height: 250px;
   z-index: 2;
 `;
 
 export const Icon = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background-color: white;
   display: flex;

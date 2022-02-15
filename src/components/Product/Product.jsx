@@ -1,26 +1,30 @@
 import {
   FavoriteBorderOutlined,
   SearchOutlined,
-  ShoppingCartOutlined,
+  // ShoppingCartOutlined,
 } from "@material-ui/icons";
-import { Link } from "react-router-dom";
-import { Container, Circle, Image, Info, Icon } from "./Product.style";
+import { Container, Image, Info, Icon } from "./Product.style";
+import { useNavigate } from "react-router-dom";
 
-const Product = ({ item }) => {
+const Product = ({ item}) => {
+  const navigate = useNavigate();
+
+  function onChangeColor(e) {
+    e.target.style.color = "red";
+    e.target.style.border = "2px solid red";
+  }
+  function onNavigate() {
+    navigate(`/product/${item._id}`);
+  }
   return (
     <Container>
-      <Circle />
+      {/* <Circle /> */}
       <Image src={item.img} />
       <Info>
-        <Icon>
-          <ShoppingCartOutlined />
+        <Icon onClick={onNavigate}>
+          <SearchOutlined />
         </Icon>
-        <Icon>
-          <Link to={`/product/${item._id}`}>
-            <SearchOutlined />
-          </Link>
-        </Icon>
-        <Icon>
+        <Icon onClick={onChangeColor}>
           <FavoriteBorderOutlined />
         </Icon>
       </Info>

@@ -1,14 +1,23 @@
-import React from 'react'
-import { useLocation } from 'react-router-dom'
+import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { onCleanCart } from "../../redux/apiCalls";
+import { Container, DivSuccess } from "./Success";
 
 const Success = () => {
-    const location = useLocation()
-    console.log(location);
-    return (
-        <div>
-            successfull
-        </div>
-    )
-}
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-export default Success
+    setTimeout(() => {
+        onCleanCart(dispatch)
+        navigate("/");
+    }, 2000);
+
+    return (
+        <Container>
+            <DivSuccess>Success</DivSuccess>
+        </Container>
+    );
+};
+
+export default Success;
