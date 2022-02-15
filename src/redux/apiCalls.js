@@ -1,5 +1,6 @@
 import { loginFailure, loginStart, loginSuccess } from './userRedux'
 import { onClean } from './cartRedux'
+import { addFavorite,clearFavorite } from './favoriteRedux'
 import { publicRequest } from '../requestMethods'
 
 
@@ -15,5 +16,12 @@ export const login = async (dispatch, user) => {
 
 export const onCleanCart = (dispatch) => {
     dispatch(onClean())
+}
+
+export const addFavorites = (dispatch,product)=>{
+    dispatch(addFavorite(product))
+}
+export const clearFavorites = (dispatch,id)=>{
+    dispatch(clearFavorite(id))
 }
 

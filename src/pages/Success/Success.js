@@ -3,12 +3,27 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
+  position: relative;
+  ${'' /* background: linear-gradient(
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("https://images.pexels.com/photos/6984650/pexels-photo-6984650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+    url("https://www.crushpixel.com/big-static14/preview4/online-sellers-packing-shoes-boxes-1584869.jpg")
       center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center; */}
+`;
+
+export const Img = styled.img`
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    );
   background-size: cover;
   display: flex;
   align-items: center;
@@ -16,16 +31,22 @@ export const Container = styled.div`
 `;
 
 export const DivSuccess = styled.div`
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 15px;
+  border-radius: 100%;
   width: 200px;
-  height: 120px;
+  height: 200px;
   font-size: 40px;
   font-weight: 700;
-  color: #fff;
-  border: 2px solid green;
-  background: lightgreen;
+  ${'' /* color: #90ee90; */}
+  color: #6ddb6d;
+  border: 1px solid #fff;
+  box-shadow: 1px 1px 10px #000;
+  background-color: rgba(255,255,255,.4);
  
 `;
