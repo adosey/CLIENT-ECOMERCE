@@ -10,9 +10,10 @@ import {
     Agreement,
     Button,
 } from "./Register.style";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Register = () => {
+    const navigate = useNavigate()
     const [data, setData] = useState({
         username: '',
         email: '',
@@ -26,7 +27,7 @@ const Register = () => {
         setError(false);
         try {
             const res = await publicRequest.post("auth/register", data);
-            res.data && window.location.replace("/login");
+            res.data && navigate("/login");
         } catch (err) {
             setError(true);
         }

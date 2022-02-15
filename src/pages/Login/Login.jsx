@@ -29,7 +29,7 @@ const Login = () => {
             return alert("Debe ingresar datos");
         }
         login(dispatch, data)
-            .then(response => console.log(response))
+            .then(response => navigate('/'))
             .catch(err => console.log(err))
     };
 
