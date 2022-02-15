@@ -29,7 +29,7 @@ const Navbar = () => {
         e.preventDefault();
         dispatch(onClean())
         dispatch(logout(user));
-        navigate.push('/')
+        navigate('/')
     };
 
     return (
