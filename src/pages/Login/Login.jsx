@@ -26,7 +26,7 @@ const Login = () => {
     const handleClick = (e) => {
         e.preventDefault();
         if (data.username === "" || data.password === "") {
-            return alert("Debe ingresar datos");
+            return alert("Debe ingresar datos..");
         }
         login(dispatch, data)
             .then(response => navigate('/'))
