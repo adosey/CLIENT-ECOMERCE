@@ -59,6 +59,7 @@ const Products = ({ cat, filters, sort }) => {
             );
     }, [products, cat, filters]);
 
+
     return (
         <Container>
             <ContainerProd>
@@ -66,7 +67,7 @@ const Products = ({ cat, filters, sort }) => {
                     <ArrowLeftOutlined onClick={() => handleClickPrev()} />
                 </Arrow>
                 {pagesNumber.map((number) => {
-                    return <Arrow onClick={() => onPage(number)}>{number}</Arrow>
+                    return <Arrow key={number} onClick={() => onPage(number)}>{number}</Arrow>
                 })}
                 <Arrow>
                     <ArrowRightOutlined onClick={() => handleClickNext()} />
