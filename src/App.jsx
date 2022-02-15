@@ -2,11 +2,11 @@ import Product from "./pages/Product/Product";
 import Home from "./pages/Home/Home";
 import ProductList from "./pages/ProductList/ProductList";
 import Register from "./pages/Register/Register";
-import Login from "./pages/Login/Login";
-import Cart from "./pages/Cart/Cart";
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Success from "./pages/Success/Success";
 import { useSelector } from "react-redux";
+import Login from "./pages/Login/Login";
+import Cart from "./pages/Cart/Cart.jsx";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Success from "./pages/Success/Success.jsx";
 
 const App = () => {
     const user = useSelector(state => state.user.currentUser)
@@ -17,9 +17,9 @@ const App = () => {
                 <Route path='/products/:category' element={<ProductList />} />
                 <Route path='/product/:id' element={<Product />} />
                 <Route path='/cart' element={<Cart />} />
-                <Route path='/success' element={<Success />} />
                 <Route path='/login' element={user ? <Home /> : <Login />} />
                 <Route path='/register' element={user ? <Home /> : <Register />} />
+                <Route path='/success' element={<Success />} />
             </Routes>
         </BrowserRouter>
     );

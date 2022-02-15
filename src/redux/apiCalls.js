@@ -1,6 +1,7 @@
 import { loginFailure, loginStart, loginSuccess } from './userRedux'
-import { onClean} from './cartRedux'
+import { onClean } from './cartRedux'
 import { publicRequest } from '../requestMethods'
+
 
 export const login = async (dispatch, user) => {
     dispatch(loginStart())
@@ -12,7 +13,7 @@ export const login = async (dispatch, user) => {
     }
 }
 
-export const onCleanCart = (dispatch) =>{
+export const onCleanCart = (dispatch) => {
     dispatch(onClean())
 }
 
