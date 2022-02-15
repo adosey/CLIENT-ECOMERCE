@@ -1,13 +1,13 @@
-import { Add, Remove } from "@material-ui/icons";
-import { useSelector, useDispatch } from "react-redux";
-import styled from "styled-components";
-// import Announcement from "../components/Announcement";
-import Footer from "../../components/Footer/Footer";
-import Navbar from "../../components/Navbar/Navbar";
-import { mobile } from "../../responsive";
-import StripeCheckout from "react-stripe-checkout";
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { userRequest } from "../../requestMethods";
+import { useNavigate } from "react-router-dom";
+import { onCleanCart } from "../../redux/apiCalls";
+import StripeCheckout from "react-stripe-checkout";
+import Navbar from "../../components/Navbar/Navbar";
+import Announcement from "../../components/Announcement/Announcement";
+import Footer from "../../components/Footer/Footer";
+import Logo from '../../asset/logo.png'
 import {
     Container,
     Wrapper,
@@ -36,9 +36,7 @@ import {
     SummaryItemPrice,
     Button,
 } from "./Cart.style";
-import { useNavigate } from "react-router-dom";
-import { onCleanCart } from "../../redux/apiCalls";
-import Announcement from "../../components/Announcement/Announcement";
+
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -160,7 +158,7 @@ const Cart = () => {
                         </SummaryItem>
                         <StripeCheckout
                             name="ECOMERCE"
-                            image="https://avatars.githubusercontent.com/u/1486366?v=4"
+                            image={Logo}
                             billingAddress
                             shippingAddress
                             description={`Your total is $${cart.total}`}

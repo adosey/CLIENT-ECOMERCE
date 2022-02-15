@@ -2,7 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { onCleanCart } from "../../redux/apiCalls";
-import { Container, DivSuccess } from "./Success";
+import Fondo from '../../asset/success.jpg'
+import { Container, DivSuccess, Img } from "./Success.js";
 
 const Success = () => {
     const navigate = useNavigate();
@@ -15,7 +16,10 @@ const Success = () => {
 
     return (
         <Container>
-            <DivSuccess>Success</DivSuccess>
+            <Img src={Fondo} />
+            <DivSuccess>
+                Success
+            </DivSuccess>
         </Container>
     );
 };

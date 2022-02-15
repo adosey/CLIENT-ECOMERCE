@@ -45,39 +45,45 @@ const Navbar = () => {
                 <Center>
                     <Logo>
                         <Link className="linkGeneric" to="/">
-                            ECOMERCE
+                            E-COMERCE
                         </Link>
                     </Logo>
                 </Center>
                 <Right>
                     {!user && (
-                        <Link className="linkGeneric" to="/register">
-                            <MenuItem>Register</MenuItem>
-                        </Link>
+                        <MenuItem>
+                            <Link className="linkGeneric" to="/register">
+                                REGISTER
+                            </Link>
+                        </MenuItem>
                     )}
                     {!user ? (
-                        <Link className="linkGeneric" to="/login">
-                            <MenuItem>Log in</MenuItem>
-                        </Link>
+                        <MenuItem>
+                            <Link className="linkGeneric" to="/login">
+                                LOGIN
+                            </Link>
+                        </MenuItem>
                     ) : (
-                        <MenuItem onClick={handleClick}>Logout</MenuItem>
+                        <MenuItem onClick={handleClick}>
+                            LOGOUT
+                        </MenuItem>
                     )}
                     {!user ? (
-                        <Link to="/login">
-                            <MenuItem>
-                                <Badge badgeContent={quantity} color="secondary">
+                        <MenuItem>
+                            <Badge badgeContent={quantity} color="secondary">
+                                <Link className="linkGeneric" to="/login">
                                     <ShoppingCartOutlined />
-                                </Badge>
-                            </MenuItem>
-                        </Link>
+                                </Link>
+                            </Badge>
+                        </MenuItem>
                     ) : (
-                        <Link to="/cart">
-                            <MenuItem>
-                                <Badge badgeContent={quantity} color="secondary" >
+                        <MenuItem>
+                            <Badge badgeContent={quantity} color="secondary" >
+                                <Link className="linkGeneric" to="/cart">
                                     <ShoppingCartOutlined />
-                                </Badge>
-                            </MenuItem>
-                        </Link>
+                                </Link>
+                            </Badge>
+                        </MenuItem>
                     )}
                 </Right>
             </Wrapper>
