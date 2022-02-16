@@ -9,6 +9,7 @@ ${mobile({ height: "50px" })}
 
 export const Wrapper = styled.div`
 padding: 10px 20px;
+position:sticky;
 display: flex;
 align-items: center;
 justify-content: space-between;
@@ -42,12 +43,22 @@ ${mobile({ width: "50px" })}
 
 export const Center = styled.div`
 flex: 1;
+display: flex;
+justify-content: center;
+align-items: center;
 text-align: center;
 `;
 
-export const Logo = styled.h1`
-font-size: 40px;
-font-weight: bold;
+export const Logo = styled.h6`
+font-size: 30px;
+margin: 10px;
+color: #000000;
+font-weight: 600;
+z-index:99;
+${mobile({ fontSize: "24px" })}
+`;
+export const Img = styled.img`
+width: 100px;
 ${mobile({ fontSize: "24px" })}
 `;
 export const Right = styled.div`

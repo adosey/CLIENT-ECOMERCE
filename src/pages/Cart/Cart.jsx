@@ -91,8 +91,8 @@ const Cart = () => {
 
     return (
         <Container>
-            <Navbar />
             <Announcement />
+            <Navbar />
             <Wrapper>
                 {/* <Title>YOUR BAG</Title> */}
                 <Top>
@@ -105,7 +105,7 @@ const Cart = () => {
                 </Top>
                 <Bottom>
                     <Info>
-                        {cart.products.map((product) => (
+                        {cart.products.map((product, indx) => (
                             <Product>
                                 <ProductDetail>
                                     <Image src={product.img} />

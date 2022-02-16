@@ -56,7 +56,8 @@ export const List = styled.ul`
 export const ListItem = styled.li`
   width: 50%;
   margin-bottom: 10px;
-`;
+  cursor: pointer;
+  `;
 
 export const Right = styled.div`
   flex: 1;

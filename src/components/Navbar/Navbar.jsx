@@ -5,6 +5,7 @@ import { logout } from "../../redux/userRedux";
 import { Link, useNavigate } from "react-router-dom";
 import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
+import EcomImg from '../../asset/logo.png'
 import {
     Container,
     Wrapper,
@@ -16,6 +17,7 @@ import {
     Logo,
     Right,
     MenuItem,
+    Img
 } from "./Navbar.style";
 import { onClean } from "../../redux/cartRedux";
 
@@ -36,16 +38,24 @@ const Navbar = () => {
         <Container>
             <Wrapper>
                 <Left>
-                    <Language>EN</Language>
+                    <Link className="linkGeneric" to="/">
+                        <Img src={EcomImg} />
+                    </Link>
+                    {/* <Language>EN</Language>
                     <SearchContainer>
                         <Input placeholder="Search" />
                         <Search style={{ color: "gray", fontSize: 16 }} />
-                    </SearchContainer>
+                    </SearchContainer> */}
                 </Left>
                 <Center>
+                    <Link className="linkGeneric" to="/">
+                        <Logo>
+                            HOME
+                        </Logo>
+                    </Link>
                     <Logo>
-                        <Link className="linkGeneric" to="/">
-                            E-COMERCE
+                        <Link className="linkGeneric" to="/favorites">
+                            FAVORITE
                         </Link>
                     </Logo>
                 </Center>

@@ -12,7 +12,7 @@ const Success = () => {
     setTimeout(() => {
         onCleanCart(dispatch)
         navigate("/");
-    }, 2000);
+    }, 2500);
 
     return (
         <Container>

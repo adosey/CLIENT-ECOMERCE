@@ -87,8 +87,8 @@ const Product = () => {
                     </Container>
                 ) : (
                     <Container>
-                        <Navbar />
                         <Announcement />
+                        <Navbar />
                         <Wrapper>
                             <ImgContainer>
                                 <Image src={product.img} />
