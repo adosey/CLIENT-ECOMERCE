@@ -127,7 +127,7 @@ const Favorites = () => {
                                                 </FilterSize>
                                             </Filter>
                                         </FilterContainer>
-                                        <AddContainer>
+                                        {/* <AddContainer>
                                             <AmountContainer>
                                                 <Remove
                                                     style={{ cursor: "pointer" }}
@@ -148,7 +148,7 @@ const Favorites = () => {
                                                     <Button onClick={handleClick}>ADD TO CART</Button>
                                                 </div>
                                             )}
-                                        </AddContainer>
+                                        </AddContainer> */}
                                     </InfoContainer>
                                 </Wrapper>
                             );

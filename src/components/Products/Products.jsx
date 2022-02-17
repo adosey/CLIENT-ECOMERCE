@@ -7,12 +7,10 @@ import axios from "axios";
 import { Container, ContainerProd, Arrow } from "./Products.style";
 
 const Products = ({ cat, filters, sort }) => {
-  console.log(sort);
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [productForPage] = useState(8);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  console.log(filteredProducts);
   const indexLast = page * productForPage;
   const indexFirst = indexLast - productForPage;
   const allProductsForPage = products.slice(indexFirst, indexLast);

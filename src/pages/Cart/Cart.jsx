@@ -87,8 +87,6 @@ const Cart = () => {
         stripeToken && makeRequest();
     }, [stripeToken, total, navigate]);
 
-    console.log(total);
-
     return (
         <Container>
             <Announcement />
